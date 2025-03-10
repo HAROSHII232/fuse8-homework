@@ -11,7 +11,7 @@ export const router = createBrowserRouter([
     element: <App />,
     errorElement: <NotFoundPage />,
     children: [
-      { path: routes.main.pathName, element: <MainPage /> },
+      { path: routes.main.pathName, element: <MainPage />, index: true },
       { path: routes.randomPost.pathName, element: <RandomPostPage /> },
     ],
   },

@@ -1,4 +1,4 @@
-import { routes } from '@shared/helpers/routes';
+import { routes } from '@shared/services/routes';
 import { NavLink } from 'react-router';
 
 export const Header = () => {

@@ -1,6 +1,6 @@
 import { MainPage } from '@pages/main';
 import { RandomPostPage } from '@pages/random-post';
-import { routes } from '@shared/helpers/routes';
+import { routes } from '@shared/services/routes';
 import { createBrowserRouter } from 'react-router';
 import { App } from './app';
 import { NotFoundPage } from '@pages/not-found';

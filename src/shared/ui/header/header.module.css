@@ -19,6 +19,7 @@
   color: rgb(95 88 88);
 }
 
+.nav a:hover,
 .nav .active {
-  color: #373fd4;
+  color: #2630ec;
 }

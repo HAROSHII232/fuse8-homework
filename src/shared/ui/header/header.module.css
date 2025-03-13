@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  width: 100%;
+  min-height: 80px;
+  padding: 20px;
+  margin-bottom: 100px;
+}
+
+.nav {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.nav a {
+  font-size: 30px;
+  color: rgb(95 88 88);
+}
+
+.nav a:hover,
+.nav .active {
+  color: #2630ec;
+}

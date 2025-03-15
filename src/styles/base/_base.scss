@@ -1,0 +1,44 @@
+// -------------------------------------
+// This file contains very basic styles.
+// -------------------------------------
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  font-family: var(--font-family-primary);
+  font-weight: var(--font-weight-thin);
+  line-height: var(--line-height-m);
+  color: var(--text-color-primary);
+  background-color: var(--background-primary);
+  font-synthesis: none;
+  text-rendering: optimizelegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  padding: 0.625rem 1.25rem;
+  font-size: var(--font-size-m);
+  font-weight: var(--font-weight-thin);
+  cursor: pointer;
+  border: none;
+
+  &:hover {
+    background-color: #646cff;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+}

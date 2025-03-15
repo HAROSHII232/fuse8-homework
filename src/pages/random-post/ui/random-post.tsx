@@ -1,5 +1,6 @@
 import { Loader } from '@shared/ui/loader';
 import { useGetRandomPost } from '../api/use-get-random-post';
+import { Button } from '@shared/ui/button';
 
 export const RandomPostPage = () => {
   const { fetchRandomPost, error, loading, post } = useGetRandomPost();
@@ -9,9 +10,9 @@ export const RandomPostPage = () => {
       <h1>Рандомный пост</h1>
 
       {!post && !loading && !error && (
-        <button onClick={fetchRandomPost} disabled={loading}>
+        <Button onClick={fetchRandomPost} disabled={loading}>
           Получить
-        </button>
+        </Button>
       )}
 
       {loading && <Loader />}

@@ -16,6 +16,9 @@ export const Header = () => {
         <NavLink to={routes.randomPost.getLink()} className={getActiveClass}>
           Рандомный пост
         </NavLink>
+        <NavLink to={routes.landing.getLink()} className={getActiveClass}>
+          Лэндинг
+        </NavLink>
       </nav>
     </header>
   );

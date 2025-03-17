@@ -14,13 +14,18 @@
     transform 0.2s linear,
     box-shadow 0.2s linear;
 
-  &:hover {
+  p {
+    word-wrap: break-word;
+  }
+
+  @include hover-effect {
     box-shadow: 0 5px 10px var(--focus-color);
     transform: scale(1.05);
   }
 
-  p {
-    word-wrap: break-word;
+  @include active-effect {
+    box-shadow: 0 5px 10px var(--focus-color);
+    transform: scale(1.05);
   }
 
   @include media-breakpoint(mobile) {

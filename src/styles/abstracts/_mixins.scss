@@ -13,3 +13,19 @@
     }
   }
 }
+
+@mixin hover-effect {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin active-effect {
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      @content;
+    }
+  }
+}

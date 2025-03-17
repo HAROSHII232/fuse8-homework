@@ -16,6 +16,11 @@
     cursor: default;
   }
 
+  &:focus,
+  &:focus-visible {
+    outline: 4px auto -webkit-focus-ring-color;
+  }
+
   @include hover-effect {
     background-color: var(--button-color-hover);
   }
@@ -23,9 +28,7 @@
   @include active-effect {
     background-color: var(--button-color-active);
   }
-
-  &:focus,
-  &:focus-visible {
-    outline: 4px auto -webkit-focus-ring-color;
+  @include media-breakpoint(mobile) {
+    max-width: 100%;
   }
 }

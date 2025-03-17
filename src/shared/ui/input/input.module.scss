@@ -1,0 +1,36 @@
+@use '@styles/abstracts/mixins' as *;
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 300px;
+  margin-bottom: 10px;
+}
+
+.input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+
+  &Error {
+    border-color: var(--error-color);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--border-color-primary);
+    box-shadow: 0 0 5px rgb(0 123 255 / 50%);
+  }
+}
+
+.error {
+  visibility: hidden;
+  height: 20px;
+  font-size: var(--font-size-xs);
+  color: var(--error-color);
+
+  &.visible {
+    visibility: visible; // Показываем ошибку, если она есть
+  }
+}

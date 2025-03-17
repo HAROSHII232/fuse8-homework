@@ -3,12 +3,30 @@ import { AlertIcon } from '@shared/ui/icons/alert-icon';
 import { EyeIcon } from '@shared/ui/icons/eye-icon';
 
 import { useSmoothScroll } from '@shared/hooks';
-import { Card } from './ui/card';
+import { Input } from '@shared/ui/input';
+import { useState } from 'react';
 import styles from './landing.module.scss';
+import { Card } from './ui/card';
 
 export const LandingPage = () => {
+  const [alertValue, setAlertValue] = useState('');
+  const [error, setError] = useState('');
   const { ref: secondSectionRef, scrollToElement: scrollToSecondSection } =
     useSmoothScroll<HTMLDivElement>();
+
+  const handleAlertMessage = () => {
+    setError('');
+    setAlertValue('');
+    if (alertValue.trim() === '') {
+      setError('Введите что-нибудь чтобы увидеть alert');
+    } else {
+      alert(alertValue);
+    }
+  };
+
+  const handleInputFocus = () => {
+    setError('');
+  };
 
   return (
     <main className={styles.landing}>
@@ -35,8 +53,15 @@ export const LandingPage = () => {
 
       <section className={styles.section} id="second-screen2">
         <h2 className={styles.section__title}>Интерактив?</h2>
-        <input type="text" placeholder="Напишите тут что-нибудь" />
-        <Button>
+        <Input
+          value={alertValue}
+          placeholder={'Напишите тут что-нибудь'}
+          onChangeText={setAlertValue}
+          onEnter={handleAlertMessage}
+          onFocus={handleInputFocus}
+          error={error}
+        />
+        <Button onClick={handleAlertMessage}>
           Вывести текст в alert
           <AlertIcon />
         </Button>

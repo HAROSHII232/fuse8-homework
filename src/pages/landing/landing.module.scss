@@ -1,0 +1,40 @@
+@use '@styles/abstracts/mixins' as *;
+
+.landing {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 20px;
+  text-align: center;
+
+  &:nth-child(odd) {
+    background-color: var(--background-secondary);
+  }
+
+  &:has(.cardsContainer) {
+    @include media-breakpoint(mobile) {
+      height: auto;
+    }
+  }
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xxl);
+}
+
+.cardsContainer {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+
+  @include media-breakpoint(mobile) {
+    flex-direction: column;
+  }
+}

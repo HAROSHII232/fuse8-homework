@@ -1,1 +1,1 @@
-export { LandingPage } from './ui/landing.tsx';
+export { LandingPage } from './landing';

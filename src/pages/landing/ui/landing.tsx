@@ -4,8 +4,8 @@ import { EyeIcon } from '@shared/ui/icons/eye-icon';
 
 import { useAlert, useSmoothScroll } from '@shared/hooks';
 import { Input } from '@shared/ui/input';
+import { Card } from './card';
 import styles from './landing.module.scss';
-import { Card } from './ui/card';
 
 export const LandingPage = () => {
   const {
@@ -22,6 +22,7 @@ export const LandingPage = () => {
   return (
     <main className={styles.landing}>
       <h1 className="visually-hidden">Очень интересный landing page</h1>
+
       <section className={styles.section}>
         <h2 className={styles.sectionTitle}>
           Интересные факты про эту страницу

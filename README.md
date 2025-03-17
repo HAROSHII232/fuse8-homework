@@ -1,8 +1,4 @@
-# Рандомный пост :eyes:
-
-Веб-приложение на React которое при нажатии на кнопку получает случайный пост из [API](https://jsonplaceholder.typicode.com/) и отображает его заголовок
-
-## **Приложение**:
+# fuse:eight:
 
 [Деплой](https://warm-dolphin-9a443b.netlify.app/)
 
@@ -12,8 +8,13 @@
 - **TypeScript**
 - **React Router**
 - **Axios**
-- **Module CSS**
+- **SCSS**
 - **EsLint, StyleLint, Prettier**
+
+## Основные моменты по проекту
+
+-[Рандомный пост :eyes:](./docs/random-post.md)
+-[Landing Page :airplane:](./docs/landing-page.md)
 
 ## Установка
 

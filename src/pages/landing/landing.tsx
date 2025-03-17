@@ -2,31 +2,22 @@ import { Button } from '@shared/ui/button';
 import { AlertIcon } from '@shared/ui/icons/alert-icon';
 import { EyeIcon } from '@shared/ui/icons/eye-icon';
 
-import { useSmoothScroll } from '@shared/hooks';
+import { useAlert, useSmoothScroll } from '@shared/hooks';
 import { Input } from '@shared/ui/input';
-import { useState } from 'react';
 import styles from './landing.module.scss';
 import { Card } from './ui/card';
 
 export const LandingPage = () => {
-  const [alertValue, setAlertValue] = useState('');
-  const [error, setError] = useState('');
+  const {
+    alertValue,
+    setAlertValue,
+    error,
+    handleAlertMessage,
+    handleInputFocus,
+  } = useAlert();
+
   const { ref: secondSectionRef, scrollToElement: scrollToSecondSection } =
     useSmoothScroll<HTMLDivElement>();
-
-  const handleAlertMessage = () => {
-    setError('');
-    setAlertValue('');
-    if (alertValue.trim() === '') {
-      setError('Введите что-нибудь чтобы увидеть alert');
-    } else {
-      alert(alertValue);
-    }
-  };
-
-  const handleInputFocus = () => {
-    setError('');
-  };
 
   return (
     <main className={styles.landing}>

@@ -1,13 +1,13 @@
 import { Header } from '@shared/ui/header';
 import { Outlet } from 'react-router';
 
-import './index.css';
+import styles from './layout-with-header.module.scss';
 
-export const App = () => {
+export const LayoutWithHeader = () => {
   return (
     <>
       <Header />
-      <div className="container">
+      <div className={styles.container}>
         <Outlet />
       </div>
     </>

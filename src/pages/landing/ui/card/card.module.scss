@@ -1,0 +1,34 @@
+@use '@styles/abstracts/mixins' as *;
+
+.cardItem {
+  width: 100%;
+  max-width: 300px;
+  padding: 20px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  transition:
+    transform 0.2s linear,
+    box-shadow 0.2s linear;
+
+  p {
+    word-wrap: break-word;
+  }
+
+  @include hover-effect {
+    box-shadow: 0 5px 10px var(--focus-color);
+    transform: scale(1.05);
+  }
+
+  @include active-effect {
+    box-shadow: 0 5px 10px var(--focus-color);
+    transform: scale(1.05);
+  }
+
+  @include media-breakpoint(mobile) {
+    max-width: 100%;
+  }
+}

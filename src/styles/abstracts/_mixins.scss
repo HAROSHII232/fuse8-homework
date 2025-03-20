@@ -1,0 +1,31 @@
+@mixin media-breakpoint($breakpoint) {
+  @if $breakpoint == mobile {
+    @media (width <= 599px) {
+      @content;
+    }
+  } @else if $breakpoint == tablet {
+    @media (width >= 600px) and (width <= 1199px) {
+      @content;
+    }
+  } @else if $breakpoint == desktop {
+    @media (width >= 1200px) {
+      @content;
+    }
+  }
+}
+
+@mixin hover-effect {
+  @media (hover: hover) and (pointer: fine) {
+    &:hover {
+      @content;
+    }
+  }
+}
+
+@mixin active-effect {
+  @media (hover: none) and (pointer: coarse) {
+    &:active {
+      @content;
+    }
+  }
+}

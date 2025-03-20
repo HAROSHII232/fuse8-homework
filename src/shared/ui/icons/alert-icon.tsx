@@ -7,7 +7,7 @@ export const AlertIcon = (props: SVGProps<SVGSVGElement>) => {
       width="16"
       height="16"
       viewBox="0 0 16 16"
-      fill="tomato"
+      fill="currentColor"
       {...props}
     >
       <g clipPath="url(#clip0_859_20025)">

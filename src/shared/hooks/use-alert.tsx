@@ -14,7 +14,7 @@ export const useAlert = () => {
     }
   };
 
-  const handleInputFocus = () => {
+  const resetError = () => {
     setError('');
   };
 
@@ -23,6 +23,6 @@ export const useAlert = () => {
     setAlertValue,
     error,
     handleAlertMessage,
-    handleInputFocus,
+    resetError,
   };
 };

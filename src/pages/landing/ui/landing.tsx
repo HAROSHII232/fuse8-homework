@@ -8,13 +8,8 @@ import { Card } from './card';
 import styles from './landing.module.scss';
 
 export const LandingPage = () => {
-  const {
-    alertValue,
-    setAlertValue,
-    error,
-    handleAlertMessage,
-    handleInputFocus,
-  } = useAlert();
+  const { alertValue, setAlertValue, error, handleAlertMessage, resetError } =
+    useAlert();
 
   const { ref: secondSectionRef, scrollToElement: scrollToSecondSection } =
     useSmoothScroll<HTMLDivElement>();
@@ -50,7 +45,7 @@ export const LandingPage = () => {
           placeholder={'Напишите тут что-нибудь'}
           onChangeText={setAlertValue}
           onEnter={handleAlertMessage}
-          onFocus={handleInputFocus}
+          onFocus={resetError}
           error={error}
         />
         <Button onClick={handleAlertMessage}>

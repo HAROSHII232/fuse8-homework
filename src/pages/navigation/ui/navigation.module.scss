@@ -1,0 +1,25 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.navigation {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.navigationLevel1 {
+  margin: 20px 0;
+}
+
+.navigationLevel2 {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.navigationLevel3 {
+  padding-left: 20px;
+  margin: 10px 0;
+}

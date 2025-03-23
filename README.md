@@ -1,4 +1,4 @@
-# fuse:eight:
+# fuse :eight:
 
 [Деплой](https://warm-dolphin-9a443b.netlify.app/)
 
@@ -15,7 +15,7 @@
 
 - [Рандомный пост](./docs/random-post.md) :eyes:
 - [Landing Page](./docs/landing-page.md) :airplane:
-
+- [Навигация](./docs/navigation.md) 🧭
 ## Установка
 
 ```

@@ -11,4 +11,8 @@ export const routes = {
     getLink: () => `/landings`,
     pathName: '/landings',
   },
+  navigation: {
+    getLink: () => `/navigation`,
+    pathName: '/navigation',
+  },
 };

@@ -13,8 +13,8 @@
 
 ## Основные моменты по проекту
 
--[Рандомный пост :eyes:](./docs/random-post.md)
--[Landing Page :airplane:](./docs/landing-page.md)
+- [Рандомный пост](./docs/random-post.md) :eyes:
+- [Landing Page](./docs/landing-page.md) :airplane:
 
 ## Установка
 

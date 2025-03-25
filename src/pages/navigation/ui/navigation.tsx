@@ -1,13 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Link } from 'react-router';
 import styles from './navigation.module.scss';
-
-type Route = {
-  name: RouteName | string;
-  pathname: string;
-  getLink: () => string;
-  text: string;
-};
+import { Route, routes } from '@shared/services';
 
 type NavigationItem = {
   name: string;
@@ -29,39 +23,6 @@ const USER_READ_PERMISSIONS = [
 
 const checkHasUserPermission: CheckPermission = (routeName) => {
   return USER_READ_PERMISSIONS.includes(routeName);
-};
-
-const routes: Record<string, Route> = {
-  vacancies: {
-    name: 'vacancies',
-    pathname: 'vacancies',
-    getLink: () => '/vacancies',
-    text: 'Вакансии',
-  },
-  candidates: {
-    name: 'candidates',
-    pathname: 'candidates',
-    getLink: () => '/candidates',
-    text: 'Кандидаты',
-  },
-  events: {
-    name: 'events',
-    pathname: 'events',
-    getLink: () => '/events',
-    text: 'События',
-  },
-  clients: {
-    name: 'clients',
-    pathname: 'clients',
-    getLink: () => '/clients',
-    text: 'Клиенты',
-  },
-  partners: {
-    name: 'partners',
-    pathname: 'partners',
-    getLink: () => '/partners',
-    text: 'Партнёры',
-  },
 };
 
 const navigationList: NavigationItem[] = [

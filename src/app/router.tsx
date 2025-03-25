@@ -9,14 +9,14 @@ import { LayoutWithHeader } from '../layouts/layout-with-header/layout-with-head
 
 export const router = createBrowserRouter([
   {
-    path: routes.main.pathName,
+    path: routes.main.pathname,
     element: <LayoutWithHeader />,
     errorElement: <NotFoundPage />,
     children: [
-      { path: routes.main.pathName, element: <MainPage />, index: true },
-      { path: routes.randomPost.pathName, element: <RandomPostPage /> },
-      { path: routes.navigation.pathName, element: <Navigation /> },
+      { path: routes.main.pathname, element: <MainPage />, index: true },
+      { path: routes.randomPost.pathname, element: <RandomPostPage /> },
+      { path: routes.navigation.pathname, element: <Navigation /> },
     ],
   },
-  { path: routes.landing.pathName, element: <LandingPage /> },
+  { path: routes.landing.pathname, element: <LandingPage /> },
 ]);

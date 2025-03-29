@@ -1,0 +1,32 @@
+@use '@styles/abstracts/mixins' as *;
+
+.navigation {
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+
+.navigationLevel1 {
+  margin: 20px 0;
+}
+
+.navigationLevel2 {
+  padding-left: 20px;
+  margin: 10px 0;
+}
+
+.navigationLinks {
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
+  margin: 10px 0;
+
+  .navigationLink {
+    display: block;
+    font-weight: bold;
+    color: var(--links-color);
+
+    @include hover-effect {
+      color: var(--links-color-hover);
+    }
+  }
+}

@@ -1,3 +1,5 @@
+@use '@styles/abstracts/mixins' as *;
+
 .navigation {
   padding: 10px;
   border: 1px solid #ccc;
@@ -17,6 +19,14 @@
   flex-direction: column;
   padding-left: 20px;
   margin: 10px 0;
-  font-weight: bold;
-  color: var(--links-color);
+
+  .navigationLink {
+    display: block;
+    font-weight: bold;
+    color: var(--links-color);
+
+    @include hover-effect {
+      color: var(--links-color-hover);
+    }
+  }
 }

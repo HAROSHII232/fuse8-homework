@@ -1,6 +1,9 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { getPermittedNavigation, NavigationItem } from '@shared/helpers';
-import { Route, routes } from '@shared/services';
+import {
+  getPermittedNavigation,
+  isRoute,
+  NavigationItem,
+} from '@shared/helpers';
+import { routes } from '@shared/services';
 import { Link } from 'react-router';
 
 import styles from './navigation-with-permission.module.scss';
@@ -56,29 +59,44 @@ export const NavigationWithPermission = () => {
     checkHasUserPermission
   );
 
-  if (navigationListWithPermission.length === 0) {
-    return null;
-  }
+  if (!navigationListWithPermission.length) return null;
 
   return (
-    <nav className={styles.navigation}>
-      {navigationListWithPermission.map((level1: any) => (
-        <div key={level1.name} className={styles.navigationLevel1}>
-          {level1.text}
-          {level1.children.map((level2: any) => (
-            <div key={level2.name} className={styles.navigationLevel2}>
-              {level2.text}
-              <div className={styles.navigationLinks}>
-                {level2.children.map(({ name, text, getLink }: Route) => (
-                  <Link key={name} to={getLink()}>
-                    {text}
-                  </Link>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      ))}
+    <nav className={styles.navigation} aria-label="Main navigation">
+      <ul className={styles.navigationList} role="menu">
+        {navigationListWithPermission.map((level1) => (
+          <li key={level1.name} className={styles.navigationLevel1} role="none">
+            <span role="menuitem">{level1.text}</span>
+            <ul>
+              {level1.children.map((level2) => (
+                <li
+                  key={level2.name}
+                  className={styles.navigationLevel2}
+                  role="none"
+                >
+                  <span role="menuitem">{level2.text}</span>
+                  <ul className={styles.navigationLinks}>
+                    {'children' in level2 &&
+                      level2.children.map((route) =>
+                        isRoute(route) ? (
+                          <li key={route.name} role="none">
+                            <Link
+                              to={route.getLink()}
+                              className={styles.navigationLink}
+                              role="menuitem"
+                            >
+                              {route.text}
+                            </Link>
+                          </li>
+                        ) : null
+                      )}
+                  </ul>
+                </li>
+              ))}
+            </ul>
+          </li>
+        ))}
+      </ul>
     </nav>
   );
 };

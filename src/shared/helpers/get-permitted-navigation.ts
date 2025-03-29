@@ -9,7 +9,7 @@ export type NavigationItem = {
 
 export type CheckPermission = (routeName: RouteName) => boolean;
 
-const isRoute = (item: NavigationItem | Route): item is Route =>
+export const isRoute = (item: NavigationItem | Route): item is Route =>
   'pathname' in item;
 
 const handleRoute = (
@@ -22,7 +22,7 @@ const handleRoute = (
 const handleNavigationItem = (
   item: NavigationItem,
   checkPermission: CheckPermission
-): NavigationItem | null => {
+) => {
   const permittedChildren = getPermittedNavigation(
     item.children,
     checkPermission

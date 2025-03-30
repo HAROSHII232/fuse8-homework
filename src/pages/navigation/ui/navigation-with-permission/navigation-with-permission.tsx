@@ -4,11 +4,11 @@ import {
   NavigationItem,
 } from '@shared/helpers';
 import { routes } from '@shared/services';
-import { Link } from 'react-router';
+import { NavLink } from 'react-router';
 
-import styles from './navigation-with-permission.module.scss';
-import { useEffect, useState } from 'react';
 import { Loader } from '@shared/ui/loader';
+import { useEffect, useState } from 'react';
+import styles from './navigation-with-permission.module.scss';
 
 export type RouteName = (typeof USER_READ_PERMISSIONS)[number];
 
@@ -76,7 +76,7 @@ export const NavigationWithPermission = () => {
     };
 
     loadNavigation();
-  }, [navigationItems]);
+  }, []);
 
   if (isLoading) {
     return <Loader />;
@@ -105,13 +105,13 @@ export const NavigationWithPermission = () => {
                       level2.children.map((route) =>
                         isRoute(route) ? (
                           <li key={route.name} role="none">
-                            <Link
+                            <NavLink
                               to={route.getLink()}
                               className={styles.navigationLink}
                               role="menuitem"
                             >
                               {route.text}
-                            </Link>
+                            </NavLink>
                           </li>
                         ) : null
                       )}

@@ -7,23 +7,24 @@ export type NavigationItem = {
   children: (NavigationItem | Route)[];
 };
 
-export type CheckPermission = (routeName: RouteName) => boolean;
+export type CheckPermission = (routeName: RouteName) => Promise<boolean>;
 
 export const isRoute = (item: NavigationItem | Route): item is Route =>
   'pathname' in item;
 
-const handleRoute = (
+const handleRoute = async (
   route: Route,
   checkPermission: CheckPermission
-): Route | null => {
-  return checkPermission(route.name as RouteName) ? route : null;
+): Promise<Route | null> => {
+  const hasPermission = await checkPermission(route.name as RouteName);
+  return hasPermission ? route : null;
 };
 
-const handleNavigationItem = (
+const handleNavigationItem = async (
   item: NavigationItem,
   checkPermission: CheckPermission
-) => {
-  const permittedChildren = getPermittedNavigation(
+): Promise<NavigationItem | null> => {
+  const permittedChildren = await getPermittedNavigation(
     item.children,
     checkPermission
   );
@@ -32,15 +33,18 @@ const handleNavigationItem = (
     : null;
 };
 
-export const getPermittedNavigation = (
+export const getPermittedNavigation = async (
   navigationList: (NavigationItem | Route)[],
   checkPermission: CheckPermission
-): NavigationItem[] => {
-  return navigationList
-    .map((item) =>
-      isRoute(item)
-        ? handleRoute(item, checkPermission)
-        : handleNavigationItem(item, checkPermission)
-    )
-    .filter(Boolean) as NavigationItem[];
+): Promise<NavigationItem[]> => {
+  const processedItems = await Promise.all(
+    navigationList.map(async (item) => {
+      if (isRoute(item)) {
+        return await handleRoute(item, checkPermission);
+      }
+      return await handleNavigationItem(item, checkPermission);
+    })
+  );
+
+  return processedItems.filter(Boolean) as NavigationItem[];
 };

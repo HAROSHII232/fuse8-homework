@@ -11,6 +11,7 @@ export default defineConfig({
       '@shared': path.resolve(__dirname, './src/shared'),
       '@pages': path.resolve(__dirname, './src/pages'),
       '@styles': path.resolve(__dirname, './src/styles'),
+      '@layouts': path.resolve(__dirname, './src/layouts'),
     },
   },
   plugins: [react()],

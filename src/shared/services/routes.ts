@@ -3,6 +3,7 @@ export type Route = {
   pathname: string;
   getLink: () => string;
   text: string;
+  showInNav?: boolean;
 };
 
 export const routes: Record<string, Route> = {
@@ -11,24 +12,28 @@ export const routes: Record<string, Route> = {
     pathname: '/',
     getLink: () => '/',
     text: 'Главная',
+    showInNav: true,
   },
   randomPost: {
     name: 'random-post',
     pathname: 'random-post',
     getLink: () => `/random-post`,
     text: 'Рандомный пост',
+    showInNav: true,
   },
   landing: {
     name: 'landing',
     pathname: 'landing',
     getLink: () => `/landing`,
     text: 'Рандомный пост',
+    showInNav: true,
   },
   navigation: {
     name: 'navigation',
     pathname: 'navigation',
     getLink: () => `/navigation`,
     text: 'Навигация',
+    showInNav: true,
   },
   vacancies: {
     name: 'vacancies',

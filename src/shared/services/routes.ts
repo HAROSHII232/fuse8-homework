@@ -35,6 +35,20 @@ export const routes: Record<string, Route> = {
     text: 'Навигация',
     showInNav: true,
   },
+  articles: {
+    name: 'articles',
+    pathname: '/articles',
+    getLink: () => '/articles',
+    text: 'Статьи',
+    showInNav: true,
+  },
+  createArticle: {
+    name: 'createArticle',
+    pathname: '/articles/create',
+    getLink: () => '/articles/create',
+    text: 'Создать статью',
+    showInNav: true,
+  },
   vacancies: {
     name: 'vacancies',
     pathname: 'vacancies',

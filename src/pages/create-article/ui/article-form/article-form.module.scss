@@ -1,0 +1,19 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  label {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.description {
+  resize: none;
+}
+
+label.checkbox {
+  flex-direction: row;
+  gap: 10px;
+}

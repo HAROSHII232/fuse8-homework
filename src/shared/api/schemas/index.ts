@@ -1,2 +1,2 @@
-export { createArticleFormSchema } from './create-article-form';
-export type { CreateArticleFormValues } from './create-article-form';
+export { ArticleFormSchema } from './article-form-schema';
+export type { ArticleFormValues } from './article-form-schema';

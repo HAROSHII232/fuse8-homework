@@ -6,6 +6,7 @@ export const ArticlesPage = () => {
     queryKey: ['fetch-articles'],
     queryFn: articleAPI.getArticles,
   });
+  console.log(articles);
 
   const { mutate: deleteArticle } = useMutation({
     mutationFn: articleAPI.deleteArticle,

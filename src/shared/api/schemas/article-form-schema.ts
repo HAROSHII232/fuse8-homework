@@ -1,17 +1,17 @@
 import { z } from 'zod';
 
-export const createArticleFormSchema = z.object({
+export const ArticleFormSchema = z.object({
   title: z
     .string()
     .trim()
     .min(1, { message: 'Must be 1 or more characters long' })
     .max(100, { message: 'Must be 100 or fewer characters long' }),
-  content: z.discriminatedUnion('variant', [
+  content: z.discriminatedUnion('type', [
     z.object({
-      variant: z.literal('draft'),
+      type: z.literal('draft'),
     }),
     z.object({
-      variant: z.literal('published'),
+      type: z.literal('published'),
       description: z
         .string()
         .trim()
@@ -22,4 +22,4 @@ export const createArticleFormSchema = z.object({
   ]),
 });
 
-export type CreateArticleFormValues = z.infer<typeof createArticleFormSchema>;
+export type ArticleFormValues = z.infer<typeof ArticleFormSchema>;

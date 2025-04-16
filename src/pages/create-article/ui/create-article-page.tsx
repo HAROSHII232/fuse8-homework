@@ -1,67 +1,45 @@
-import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  articleAPI,
-  createArticleFormSchema,
-  CreateArticleFormValues,
-  delay,
-} from '@shared/api';
+import { articleAPI, ArticleFormValues } from '@shared/api';
+import { useCreateArticleForm } from '@shared/hooks';
 import { routes } from '@shared/services';
 import { useMutation } from '@tanstack/react-query';
-import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
+import { ArticleForm } from './article-form/article-form';
 
 export const CreateArticlePage = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<CreateArticleFormValues>({
-    resolver: zodResolver(createArticleFormSchema),
-    defaultValues: {
-      title: '',
-    },
-  });
+  const form = useCreateArticleForm();
   const navigate = useNavigate();
 
-  const { mutate } = useMutation({
+  const { mutate: createArticle, isPending } = useMutation({
     mutationFn: articleAPI.createArticle,
   });
 
-  const submitHandler = handleSubmit(async (data: CreateArticleFormValues) => {
-    await delay(1000);
-
-    mutate({
-      ...data,
-      content: {
-        type: 'draft',
+  const submitHandler = form.handleSubmit((data: ArticleFormValues) => {
+    createArticle(
+      {
+        ...data,
+        content:
+          data.content.type === 'draft'
+            ? { type: 'draft' }
+            : {
+                type: 'published',
+                description: data.content.description,
+                isNew: data.content.isNew || false,
+              },
       },
-    });
-    navigate(routes.articles.getLink());
+      {
+        onSuccess: () => navigate(routes.articles.getLink()),
+      }
+    );
   });
 
   return (
     <div>
       <h1>Создать статью</h1>
-      <form
+      <ArticleForm
+        form={form}
+        isSubmitting={isPending}
         onSubmit={submitHandler}
-        style={{ display: 'flex', flexDirection: 'column' }}
-      >
-        <label style={{ display: 'flex', flexDirection: 'column' }}>
-          Заголовок статьи
-          <input type="text" {...register('title')} />
-        </label>
-
-        {errors.title && (
-          <div style={{ color: 'red' }}>{errors.title.message}</div>
-        )}
-        <button
-          type="submit"
-          disabled={isSubmitting}
-          style={{ marginTop: '8px' }}
-        >
-          {isSubmitting ? 'Создание...' : 'Создать'}
-        </button>
-      </form>
+      />
     </div>
   );
 };

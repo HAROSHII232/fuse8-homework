@@ -44,8 +44,8 @@ export const routes: Record<string, Route> = {
   },
   createArticle: {
     name: 'createArticle',
-    pathname: '/articles/create',
-    getLink: () => '/articles/create',
+    pathname: '/articles-create',
+    getLink: () => '/articles-create',
     text: 'Создать статью',
     showInNav: true,
   },

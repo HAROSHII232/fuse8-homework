@@ -8,7 +8,7 @@ export const useCreateArticleForm = () => {
     defaultValues: {
       title: '',
       content: {
-        type: 'published',
+        type: 'draft',
       },
     },
   });

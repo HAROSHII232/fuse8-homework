@@ -2,6 +2,7 @@ import { ArticleFormValues } from '@shared/api';
 import { Controller, UseFormReturn } from 'react-hook-form';
 
 import styles from './article-form.module.scss';
+import { Button } from '@shared/ui/button';
 
 type Props = {
   form: UseFormReturn<ArticleFormValues>;
@@ -27,7 +28,7 @@ export const ArticleForm = ({ form, isSubmitting, onSubmit }: Props) => {
         <input type="text" {...register('title')} />
       </label>
       {errors.title && (
-        <span style={{ color: 'tomato' }}>{errors.title.message}</span>
+        <span className={styles.fieldError}>{errors.title.message}</span>
       )}
 
       <label>
@@ -59,7 +60,7 @@ export const ArticleForm = ({ form, isSubmitting, onSubmit }: Props) => {
                   />
                 </label>
                 {fieldState.error && (
-                  <span style={{ color: 'tomato' }}>
+                  <span className={styles.fieldError}>
                     {fieldState.error.message}
                   </span>
                 )}
@@ -74,9 +75,9 @@ export const ArticleForm = ({ form, isSubmitting, onSubmit }: Props) => {
         </>
       )}
 
-      <button type="submit" disabled={isSubmitting}>
+      <Button type="submit" disabled={isSubmitting}>
         {isSubmitting ? 'Создание...' : 'Создать'}
-      </button>
+      </Button>
     </form>
   );
 };

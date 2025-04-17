@@ -1,28 +1,33 @@
 import { ArticleFormValues } from '@shared/api';
-import { Controller, UseFormReturn } from 'react-hook-form';
+import { Controller } from 'react-hook-form';
 
 import styles from './article-form.module.scss';
 import { Button } from '@shared/ui/button';
+import {
+  useCreateArticle,
+  useCreateArticleForm,
+} from '@pages/create-article/hooks';
 
-type Props = {
-  form: UseFormReturn<ArticleFormValues>;
-  isSubmitting: boolean;
-  onSubmit: () => void;
-};
-
-export const ArticleForm = ({ form, isSubmitting, onSubmit }: Props) => {
+export const ArticleForm = () => {
   const {
     register,
     control,
     watch,
     setValue,
+    handleSubmit,
     formState: { errors },
-  } = form;
+  } = useCreateArticleForm();
+
+  const { mutate: createArticle, isPending } = useCreateArticle();
+
+  const submitHandler = handleSubmit((data: ArticleFormValues) => {
+    createArticle(data);
+  });
 
   const contentType = watch('content.type');
 
   return (
-    <form onSubmit={onSubmit} className={styles.form}>
+    <form onSubmit={submitHandler} className={styles.form}>
       <label>
         <span> Заголовок статьи</span>
         <input type="text" {...register('title')} />
@@ -75,8 +80,8 @@ export const ArticleForm = ({ form, isSubmitting, onSubmit }: Props) => {
         </>
       )}
 
-      <Button type="submit" disabled={isSubmitting}>
-        {isSubmitting ? 'Создание...' : 'Создать'}
+      <Button type="submit" disabled={isPending}>
+        {isPending ? 'Создание...' : 'Создать'}
       </Button>
     </form>
   );

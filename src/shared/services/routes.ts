@@ -25,7 +25,7 @@ export const routes: Record<string, Route> = {
     name: 'landing',
     pathname: 'landing',
     getLink: () => `/landing`,
-    text: 'Рандомный пост',
+    text: 'Лэндинг',
     showInNav: true,
   },
   navigation: {

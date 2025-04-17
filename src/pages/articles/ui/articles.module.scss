@@ -1,0 +1,17 @@
+@use '@styles/abstracts/mixins' as *;
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.article {
+  padding: 12px;
+  border: 1px solid #ccc;
+  
+  @include media-breakpoint(mobile) {
+    width: 95%;
+  }
+}

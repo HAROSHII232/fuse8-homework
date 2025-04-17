@@ -1,6 +1,6 @@
 # fuse :eight:
 
-[Деплой](https://warm-dolphin-9a443b.netlify.app/)
+[Деплой](https://fuse-8-homework.netlify.app/)
 
 ## Стек технологий
 

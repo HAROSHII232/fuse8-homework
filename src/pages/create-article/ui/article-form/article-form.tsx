@@ -28,7 +28,7 @@ export const ArticleForm = () => {
 
   return (
     <form onSubmit={submitHandler} className={styles.form}>
-      <label>
+      <label className={styles.field}>
         <span> Заголовок статьи</span>
         <input type="text" {...register('title')} />
       </label>
@@ -36,7 +36,7 @@ export const ArticleForm = () => {
         <span className={styles.fieldError}>{errors.title.message}</span>
       )}
 
-      <label>
+      <label className={styles.field}>
         <span>Тип</span>
         <select
           {...register('content.type')}
@@ -56,7 +56,7 @@ export const ArticleForm = () => {
             control={control}
             render={({ field, fieldState }) => (
               <>
-                <label>
+                <label className={styles.field}>
                   <span>Описание</span>
                   <textarea
                     {...field}

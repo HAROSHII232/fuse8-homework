@@ -1,0 +1,28 @@
+@use '@styles/abstracts/mixins' as *;
+
+.articles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.article {
+  padding: 12px;
+  border: 1px solid #ccc;
+
+  @include media-breakpoint(mobile) {
+    width: 95%;
+  }
+}
+
+.fetchError {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  color: var(--error-color);
+}
+
+.errorDetails {
+  color: var(--error-color);
+}

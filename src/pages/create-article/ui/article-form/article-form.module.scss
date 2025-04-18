@@ -1,0 +1,23 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+}
+
+.description {
+  resize: none;
+}
+
+.fieldError {
+  color: tomato;
+}
+
+label.checkbox {
+  flex-direction: row;
+  gap: 10px;
+}

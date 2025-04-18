@@ -2,26 +2,28 @@ import { routes } from '@shared/services/routes';
 import { NavLink } from 'react-router';
 
 import styles from './header.module.css';
+import { getNavRoutes } from '@shared/helpers';
 
 const getActiveClass = ({ isActive }: { isActive: boolean }) =>
   isActive ? styles.active : '';
 
 export const Header = () => {
+  const NAV_LINKS = getNavRoutes(routes);
+
   return (
     <header className={styles.header}>
       <nav className={styles.nav}>
-        <NavLink to={routes.main.getLink()} className={getActiveClass}>
-          Главная
-        </NavLink>
-        <NavLink to={routes.randomPost.getLink()} className={getActiveClass}>
-          Рандомный пост
-        </NavLink>
-        <NavLink to={routes.landing.getLink()} className={getActiveClass}>
-          Лэндинг
-        </NavLink>
-        <NavLink to={routes.navigation.getLink()} className={getActiveClass}>
-          Навигация
-        </NavLink>
+        {NAV_LINKS.map((route, index) => {
+          return (
+            <NavLink
+              key={index}
+              to={route.getLink()}
+              className={getActiveClass}
+            >
+              {route.text}
+            </NavLink>
+          );
+        })}
       </nav>
     </header>
   );

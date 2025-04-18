@@ -2,12 +2,17 @@ import { articleAPI, QUERY_KEYS } from '@shared/api';
 import { Loader } from '@shared/ui/loader';
 import { useQuery } from '@tanstack/react-query';
 import { useDeleteArticle } from '../hooks';
-
-import styles from './articles.module.scss';
 import { Button } from '@shared/ui/button';
 
+import styles from './articles.module.scss';
+
 export const ArticlesPage = () => {
-  const { data: articles, status } = useQuery({
+  const {
+    data: articles,
+    status,
+    error: fetchError,
+    refetch,
+  } = useQuery({
     queryKey: QUERY_KEYS.fetchArticles,
     queryFn: articleAPI.getArticles,
   });
@@ -18,8 +23,16 @@ export const ArticlesPage = () => {
     return <Loader />;
   }
 
-  if (status !== 'success') {
-    return null;
+  if (status === 'error') {
+    return (
+      <div className={styles.fetchError}>
+        Произошла ошибка при загрузке статей
+        {fetchError instanceof Error && (
+          <p className={styles.errorDetails}>{fetchError.message}</p>
+        )}
+        <Button onClick={() => refetch()}>Попробовать снова</Button>
+      </div>
+    );
   }
 
   return (

@@ -17,7 +17,7 @@ export const ArticlesPage = () => {
     queryFn: articleAPI.getArticles,
   });
 
-  const { mutate: deleteArticle } = useDeleteArticle();
+  const { mutate: deleteArticle, error: deleteError } = useDeleteArticle();
 
   if (status === 'pending') {
     return <Loader />;
@@ -47,6 +47,9 @@ export const ArticlesPage = () => {
               <Button type="button" onClick={() => deleteArticle(item.id)}>
                 Удалить
               </Button>
+              {deleteError && (
+                <p className={styles.errorDetails}>Не удалось удалить статью</p>
+              )}
               <p>id: {item.id}</p>
               <p>заголовок: {item.title}</p>
               <p>тип: {item.content.type}</p>

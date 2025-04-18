@@ -1,4 +1,4 @@
-import { Article, articleAPI } from '@shared/api';
+import { Article, articleAPI, QUERY_KEYS } from '@shared/api';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 export const useDeleteArticle = () => {
@@ -8,9 +8,11 @@ export const useDeleteArticle = () => {
     mutationFn: articleAPI.deleteArticle,
 
     onMutate: async (articleId) => {
-      await queryClient.cancelQueries({ queryKey: ['fetch-articles'] });
-      const previousArticles = queryClient.getQueryData(['fetch-articles']);
-      queryClient.setQueryData(['fetch-articles'], (old: Article[]) =>
+      await queryClient.cancelQueries({ queryKey: QUERY_KEYS.fetchArticles });
+      const previousArticles = queryClient.getQueryData(
+        QUERY_KEYS.fetchArticles
+      );
+      queryClient.setQueryData(QUERY_KEYS.fetchArticles, (old: Article[]) =>
         old.filter((article: Article) => article.id !== articleId)
       );
 
@@ -18,11 +20,14 @@ export const useDeleteArticle = () => {
     },
 
     onError: (_err, _articleId, context) => {
-      queryClient.setQueryData(['fetch-articles'], context?.previousArticles);
+      queryClient.setQueryData(
+        QUERY_KEYS.fetchArticles,
+        context?.previousArticles
+      );
     },
 
     onSettled: () => {
-      queryClient.invalidateQueries({ queryKey: ['fetch-articles'] });
+      queryClient.invalidateQueries({ queryKey: QUERY_KEYS.fetchArticles });
     },
   });
 };

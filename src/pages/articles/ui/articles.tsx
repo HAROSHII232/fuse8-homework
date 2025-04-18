@@ -1,4 +1,4 @@
-import { articleAPI } from '@shared/api';
+import { articleAPI, QUERY_KEYS } from '@shared/api';
 import { Loader } from '@shared/ui/loader';
 import { useQuery } from '@tanstack/react-query';
 import { useDeleteArticle } from '../hooks';
@@ -8,7 +8,7 @@ import { Button } from '@shared/ui/button';
 
 export const ArticlesPage = () => {
   const { data: articles, status } = useQuery({
-    queryKey: ['fetch-articles'],
+    queryKey: QUERY_KEYS.fetchArticles,
     queryFn: articleAPI.getArticles,
   });
 

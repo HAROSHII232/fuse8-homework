@@ -1,4 +1,4 @@
-import { articleAPI, ArticleFormValues } from '@shared/api';
+import { articleAPI, ArticleFormValues, QUERY_KEYS } from '@shared/api';
 import { routes } from '@shared/services';
 import { useQueryClient, useMutation } from '@tanstack/react-query';
 import { useNavigate } from 'react-router';
@@ -22,7 +22,7 @@ export const useCreateArticle = () => {
       }),
 
     onSuccess: () => {
-      queryClient.removeQueries({ queryKey: ['fetch-articles'] });
+      queryClient.removeQueries({ queryKey: QUERY_KEYS.fetchArticles });
       navigate(routes.articles.getLink());
     },
   });
